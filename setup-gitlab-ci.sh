@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
 #######################################
-# Installation script to do the heavy lifting.
-#
-# We put this inside of a function to avoid any issues that might arise by
-# piping this script to bash. Ideally you should avoid piping scripts to bash.
-# If you'd like to install without this script, here's where to look:
+# Add CI script to project.
 #######################################
 drupal8ci_install() {
 	check_dependencies
@@ -18,7 +14,7 @@ drupal8ci_install() {
 	# Turn on xtracing and error detection so users know what's happening.
 	set -ex
 	# Download and extract GitLab CI configuration and sample tests.
-	wget -O "$tmpdir/master.zip" https://github.com/lullabot/drupal8ci/archive/master.zip
+	wget -O "$tmpdir/master.zip" https://github.com/bycnit/drupal8ci/archive/master.zip
 	unzip "$tmpdir/master.zip" 'drupal8ci-master/dist/gitlabci/*' -d "$tmpdir"
 	rsync -va --ignore-existing "$tmpdir/drupal8ci-master/dist/gitlabci/" .
     unzip "$tmpdir/master.zip" 'drupal8ci-master/dist/common/*' -d "$tmpdir"
